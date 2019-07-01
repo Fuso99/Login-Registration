@@ -1,0 +1,29 @@
+<div class="card shadow">
+  <div class="card header align-items-center my-3 border-0">
+    <h3 class="font-italic">Login</h3>
+  </div>
+  <hr>
+  <div class="card body rounded-0 border-0">
+    <div class="row mx-5 mt-5 align-items-center">
+      <div class="col-md-3 px-3 py-3 justify-content-center">
+        <div class="rounded-circle border float-left">
+          <img
+            src="https://res-2.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco/v1499766649/kf8qqfnq569fcmee8dwc.png">
+        </div>
+      </div>
+      <div class="col-md-8 ml-5">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="E-mail" name="username" [(ngModel)]="username"/>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="password"/>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center py-3">
+      <button type="button" class="btn btn-primary" (click)='checkLogin()'>Sign in</button>
+    </div>
+  </div>
+</div>
+
+

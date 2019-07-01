@@ -1,0 +1,53 @@
+
+<div class="card shadow">
+        <div class="card header align-items-center my-3 border-0">
+            <h3 class="font-italic">Registration</h3>
+        </div>
+        <hr>
+        <div class="body mx-4 pb-3">
+            <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>         
+                <div class="form-row"> <!-- Nome - Cognome-->
+
+                    <div class="form-group col-md-6">
+                        <label>Nome</label>
+                        <input type="text" name="nome" path="nome" required="required" class="form-control" placeholder="Nome">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Cognome</label>
+                        <input type="text" name="cognome" path="cognome" required="required" class="form-control" id="" placeholder="Cognome">
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                            <label>Data di nascita</label>
+                            <input type="date" path="dataDiNascita" name="dataDiNascita" class="form-control" max="{{today() | date:'yyyy-MM-dd' }}" required="required"/>
+                    </div>
+                    <div class="form-group col-md-6">
+                            <label>Email</label>
+                            <input type="email" path="mail" name="mail" class="form-control" required="required" placeholder="Email">
+                        </div>
+
+                </div>
+
+                <div class="form-row"> <!-- Password - Confrim pwd -->
+
+                    <div class="form-group col-md-6">
+                        <label>Password</label>
+                        <input type="password" path="password" name="password" class="form-control" required="required" placeholder="Password">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Conferma Password</label>
+                        <input type="password" path="confirmPassword" name="ConfirmPassword" class="form-control" required="required" placeholder="Conferma password">
+                    </div>
+
+                </div>
+                
+                              
+                <div class="row justify-content-center py-3">        
+                    <button type="submit" class="btn btn-primary" >Submit</button>
+                </div>
+      </form>
+    </div>
+</div>

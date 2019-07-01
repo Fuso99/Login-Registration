@@ -1,0 +1,12 @@
+<nav class="navbar navbar-expand bg-dark">
+  <a class="navbar-brand" >
+    <img src="https://www.nextre.it/wp-content/themes/tptheme/images/logo.png" alt="Nextre" width="75%" height="30" >
+  </a>    
+    <button class="btn navbar-togglers text-light"  routerLink="login" routerLinkActive="disabled"> Log in           </button>     
+    <button class="btn navbar-togglers text-light"  routerLink="registration" routerLinkActive="disabled">Registrati </button>     
+    <button class="btn navbar-togglers text-light" *ngIf="loginService.isUserLoggedIn()"  routerLink="profile" routerLinkActive="disabled">Profilo         </button>
+  </nav>
+
+
+    
+
