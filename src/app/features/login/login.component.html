@@ -1,5 +1,5 @@
-<div class="card shadow">
-  <div class="card header align-items-center my-3 border-0">
+<div class="card shadow-lg pb-3">
+  <div class="card header align-items-center justify-content-center mt-3 border-0 ">
     <h3 class="font-italic">Login</h3>
   </div>
   <hr>
@@ -13,15 +13,15 @@
       </div>
       <div class="col-md-8 ml-5">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="E-mail" name="username" [(ngModel)]="username"/>
+          <input type="text" class="form-control" placeholder="E-mail" name="username" [(ngModel)]="model.username"/>
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="password"/>
+          <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="model.password"/>
         </div>
       </div>
     </div>
     <div class="row justify-content-center py-3">
-      <button type="button" class="btn btn-primary" (click)='checkLogin()'>Sign in</button>
+      <button type="button" class="btn btn-primary" (click)='login()'>Sign in</button>
     </div>
   </div>
 </div>

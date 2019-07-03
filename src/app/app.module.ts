@@ -9,6 +9,7 @@ import { ProfileComponent } from './features/profile/profile.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import {CookieService} from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

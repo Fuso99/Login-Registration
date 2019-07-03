@@ -2,3 +2,18 @@
 *:focus {
     outline: none;
 }
+
+html {
+  position: relative;
+  min-width: 1024px;
+  min-height: 768px;
+  height: 100%;
+}
+body{
+  height: 100%;
+  background-image: url("https://www.nextre.it/wp-content/uploads/2014/08/web-marketing-google-milano-1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  }
+

@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {Observable} from 'rxjs';
 import {AuthenticationService} from '../../service/authentication.service';
 
 
@@ -9,36 +11,19 @@ import {AuthenticationService} from '../../service/authentication.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  model: any = {};
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private http: HttpClient,
+    private authserv: AuthenticationService
+  ) {
 
-  username = '';
-  password = '';
-  invalidLogin = false;
-
-  constructor(private router: Router,
-              private loginservice: AuthenticationService) {
   }
 
-  ngOnInit() {
-  }
-
-  checkLogin() {
-    console.log('into checkLogin');
-    console.log(this.username);
-    console.log(this.password);
-
-
-    (this.loginservice.authenticate(this.username, this.password).subscribe(
-        data => {
-          this.router.navigate(['']);
-          this.invalidLogin = false;
-        },
-        error => {
-          this.invalidLogin = true;
-
-        }
-      )
-    );
-
+  ngOnInit() {}
+  login() {
+    this.authserv.login(this.model);
   }
 
 }

@@ -1,21 +1,20 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { User } from '../user';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {User} from '../user';
 
 
-
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class UserService {
-    constructor(private http: HttpClient) { }   
+  constructor(private http: HttpClient) {
+  }
 
-    getById(id: number) {
-        return this.http.get(`/users/${id}`);
-    }
+  getById(id: number) {
+    return this.http.get(`/users/${id}`);
+  }
 
-    register(user: User) {
-        return this.http.post(`localhost:4200/registration`, user);
-    }
-   
+  register(user: User) {
+    return this.http.post(`localhost:4200/registration`, user);
+  }
 
-   
+
 }
