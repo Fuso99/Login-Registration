@@ -39,7 +39,7 @@ export class AuthenticationService {
       params
     }).subscribe(isValid => {
         if (isValid) {
-          console.log(params)
+          this.authenticate(this.model.username, this.model.password);
           sessionStorage.setItem('token', btoa(this.model.username + ':' + this.model.password));
           this.router.navigateByUrl('profile');
         } else {
@@ -49,7 +49,6 @@ export class AuthenticationService {
       () => console.log('complete login ' + params.get('username'))
     );
   }
-
 
   authenticate(username, password) {
     const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(username + ':' + password)});
@@ -67,6 +66,7 @@ export class AuthenticationService {
   isUserLoggedIn() {
     const user = this.model.username;
     // console.log(user)
+    console.log('#################################################' + sessionStorage.getItem('token'))
     return !(user === undefined);
   }
 
