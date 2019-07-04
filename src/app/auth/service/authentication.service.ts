@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {User} from '../user';
-import {map} from 'rxjs/operators';
-import {CookieService} from 'ngx-cookie-service';
-import {Observable} from 'rxjs';
+import {User} from '../../user';
+import {delay, map, tap} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 
 
@@ -13,6 +12,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class AuthenticationService {
 
   model: any = {};
+  isLoggedIn = false;
+  redirectUrl: String;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,7 +22,7 @@ export class AuthenticationService {
   ) {
   }
 
-  login(mod) {
+  login(mod): Observable<boolean> {
     this.model = mod;
     const url = 'http://localhost:8080/login';
     const params = new HttpParams()
@@ -35,18 +36,20 @@ export class AuthenticationService {
         'Content-Type': 'application/x-www-form-urlencoded',
         withCredentials: 'true',
       },
+      // 'responseType': this.model,
       'responseType': 'html',
       params
     }).subscribe(isValid => {
         if (isValid) {
-          this.authenticate(this.model.username, this.model.password);
+         // this.authenticate(this.model.username, this.model.password);
           sessionStorage.setItem('token', btoa(this.model.username + ':' + this.model.password));
+          this.isLoggedIn = true;
           this.router.navigateByUrl('profile');
         } else {
           alert('Authentication failed.');
         }
       }, error1 => console.log(error1),
-      () => console.log('complete login ' + params.get('username'))
+      () => console.log('complete login')
     );
   }
 
@@ -64,13 +67,19 @@ export class AuthenticationService {
 
 
   isUserLoggedIn() {
-    const user = this.model.username;
-    // console.log(user)
-    console.log('#################################################' + sessionStorage.getItem('token'))
-    return !(user === undefined);
+    // const user = sessionStorage.getItem('token');
+    // console.log(!(user === null));
+    // console.log(this.isLoggedIn)
+    return (this.isLoggedIn);
   }
 
   logOut() {
     sessionStorage.removeItem('username');
+    sessionStorage.removeItem('token');
+    this.isLoggedIn = false;
+  }
+
+  navigate(strings: string[]) {
+    return this.redirectUrl =  `http://localhost:4200${strings}`;
   }
 }

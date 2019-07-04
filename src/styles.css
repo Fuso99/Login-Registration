@@ -17,3 +17,9 @@ body{
 
   }
 
+*:focus {
+  outline: none;
+}
+#title{
+  color:#8CBE2D;
+}
