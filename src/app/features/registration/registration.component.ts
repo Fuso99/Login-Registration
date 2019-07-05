@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {NgForm} from '@angular/forms';
+import {UserService} from '../../auth/service/user.service';
 
 @Component({
   selector: 'app-registration',
@@ -11,7 +12,7 @@ export class RegistrationComponent implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor() {
+  constructor(private regServ: UserService) {
   }
 
   ngOnInit() {
@@ -21,6 +22,7 @@ export class RegistrationComponent implements OnInit {
   onSubmit(f: NgForm) {
     console.log(f.value);  // { first: '', last: '' }
     console.log(f.valid);  // false
+    this.regServ.register(f.value);
   }
 
 

@@ -22,7 +22,7 @@ export class AuthenticationService {
   ) {
   }
 
-  login(mod): Observable<boolean> {
+  login(mod): Observable<any> {
     this.model = mod;
     const url = 'http://localhost:8080/login';
     const params = new HttpParams()
@@ -41,6 +41,7 @@ export class AuthenticationService {
       params
     }).subscribe(isValid => {
         if (isValid) {
+          console.log("valido");
          // this.authenticate(this.model.username, this.model.password);
           sessionStorage.setItem('token', btoa(this.model.username + ':' + this.model.password));
           this.isLoggedIn = true;

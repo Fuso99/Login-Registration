@@ -30,7 +30,10 @@ export class UserService {
   }
 
   register(user: User) {
-    return this.http.post(`localhost:8080/registration`, user);
+    console.log(user);
+    console.log(    this.http.post(`localhost:8080/registrati`, user)
+    );
+    return this.http.post(`localhost:8080/registrati`, user);
   }
 
 
